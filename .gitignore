@@ -1,79 +1,26 @@
-# Compiled Object files
-*.slo
-*.lo
+src/*.exe
+src/universe
+src/universed
+src/test_universe
+src/build.h
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
 *.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
+*.patch
+.universe
+#compilation and Qt preprocessor part
+*.qm
+Makefile
+universe-qt
+#resources cpp
+qrc_*.cpp
+#qt creator
+*.pro.user
+#mac specific
 .DS_Store
-.AppleDouble
-.LSOverride
+build
 
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-# =========================
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
+!src/leveldb/Makefile
