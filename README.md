@@ -1,4 +1,4 @@
-![UNI](https://github.com/UniverseUNI/Universe-UNI/raw/master/img/uni.png)
+![UNI](http://game-kosmos.org/IMG/uni_pic.png)
 
 Universe development tree
 
