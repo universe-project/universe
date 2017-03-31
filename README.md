@@ -1,6 +1,6 @@
 ![UNI](http://game-kosmos.org/IMG/uni_pic.png)
 
-Site: http://unicoun.pw
+Site: http://unicoin.pw
 
 Universe development tree
 
