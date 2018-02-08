@@ -1231,6 +1231,7 @@ void MapPort()
 static const char *strDNSSeed[][2] = {
     {"unicoin.pw", "seed.unicoin.pw"},
     {"unicoin.pw", "seed2.unicoin.pw"},
+};
 
 void ThreadDNSAddressSeed(void* parg)
 {
