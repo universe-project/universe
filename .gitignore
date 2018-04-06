@@ -1,8 +1,12 @@
+
+# Build
 src/*.exe
 src/universe
 src/universed
 src/test_universe
 src/build.h
+build/
+
 .*.swp
 *.*~*
 *.bak
@@ -11,16 +15,22 @@ src/build.h
 *.o
 *.patch
 .universe
-#compilation and Qt preprocessor part
+
+# Compilation and Qt preprocessor part
 *.qm
 Makefile
 universe-qt
-#resources cpp
+
+# Resources cpp
 qrc_*.cpp
-#qt creator
+
+# Qt creator
 *.pro.user
-#mac specific
+
+# Mac specific
 .DS_Store
-build
+
+# IntelliJ IDEA (PhpStorm, CLion, etc)
+.idea
 
 !src/leveldb/Makefile
