@@ -8,6 +8,18 @@
 #include <string>
 
 //
+// Openssl versions shortcuts
+// Format: MNNFFPPS ([M]ajor mi[N]or [F]ix [P]atch [S]tatus)
+// Example:
+// 0x1000103f => 1.0.1c
+//
+
+/**
+ * OpenSSL version 1.1.0 (dev).
+ */
+#define OPENSSL_VER_1_1 0x10100000L
+
+//
 // client versioning
 //
 
