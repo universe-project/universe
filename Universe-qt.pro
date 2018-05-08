@@ -472,7 +472,7 @@ macx {
 	OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 	LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 	DEFINES += MAC_OSX MSG_NOSIGNAL=0
-	ICON = src/qt/res/icons/bitcoin.icns
+	ICON = src/qt/res/icons/uni.icns
 	TARGET = "Universe-Qt"
 	QMAKE_CFLAGS_THREAD += -pthread
 	QMAKE_LFLAGS_THREAD += -pthread
