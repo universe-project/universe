@@ -75,6 +75,15 @@ int64_t nMinimumInputValue = 0;
 
 extern enum Checkpoints::CPMode CheckpointsMode;
 
+int64_t GetCoinYearReward(int64_t blockHeight)
+{
+    int64_t result = COIN_YEAR_REWARD;
+    auto it = COIN_YEAR_REWARD_MAP.lower_bound(blockHeight);
+    if (it != COIN_YEAR_REWARD_MAP.end())
+        result = it->second;
+    return result;
+}
+
 //////////////////////////////////////////////////////////////////////////////
 //
 // dispatching functions
@@ -999,12 +1008,10 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
     
-            int64_t nSubsidy = 240 * COIN;
+    int64_t nSubsidy = 240 * COIN;
 
-            if(nBestHeight == 0)
-            {
-            nSubsidy = 11200000 * COIN;
-            }
+    if(nBestHeight == 0)
+        nSubsidy = 11200000 * COIN;
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
@@ -1015,7 +1022,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 // miner's coin stake reward based on coin age spent (coin-days)
 int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 {
-    int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
+    int64_t nSubsidy = nCoinAge * GetCoinYearReward(nBestHeight) * 33 / (365 * 33 + 8);
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
