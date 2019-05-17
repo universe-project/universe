@@ -53,16 +53,16 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20
 
 static const int64_t COIN_YEAR_REWARD = 100 * CENT;
 static const std::map<uint64_t, int64_t, std::greater<uint64_t>> COIN_YEAR_REWARD_MAP = {
-        {1'300'000, 10 * CENT},
-        {1'400'000,  9 * CENT},
-        {1'500'000,  8 * CENT},
-        {1'600'000,  7 * CENT},
-        {1'700'000,  6 * CENT},
-        {1'800'000,  5 * CENT},
-        {1'900'000,  4 * CENT},
-        {2'000'000,  3 * CENT},
-        {2'500'000,  2 * CENT},
-        {3'000'000,  1 * CENT}
+        {1300000, 10 * CENT},
+        {1400000,  9 * CENT},
+        {1500000,  8 * CENT},
+        {1600000,  7 * CENT},
+        {1700000,  6 * CENT},
+        {1800000,  5 * CENT},
+        {1900000,  4 * CENT},
+        {2000000,  3 * CENT},
+        {2500000,  2 * CENT},
+        {3000000,  1 * CENT}
 };
 
 static const uint256 hashGenesisBlock("0x000007d9cd9c16f50620bbb05b26c1717e0adf05a6b9b1451144d921d045b7e2");
