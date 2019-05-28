@@ -15,7 +15,7 @@ files:
 - "boost_1_55_0.tar.bz2"
 - "boost-mingw-gas-cross-compile-2013-03-03.patch"
 script: |
-  export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
+  export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/faketime/libfaketime.so.1
   export FAKETIME=$REFERENCE_DATETIME
   export TZ=UTC
   INDIR=$HOME/build
@@ -41,7 +41,7 @@ script: |
         :
         <rc>$HOST-windres
         <archiver>$HOST-ar
-        <cxxflags>-frandom-seed=boost1
+        <cxxflags>-std=c++11 -frandom-seed=boost1
         <ranlib>$HOST-ranlib
   ;" > user-config.jam
     ./bootstrap.sh --without-icu

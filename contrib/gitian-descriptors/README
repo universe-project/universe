@@ -5,27 +5,58 @@ You need the right hardware: you need a 64-bit-capable CPU with hardware virtual
 You probably need to enable hardware virtualization in your machine's BIOS.
 
 You need to be running a recent version of 64-bit-Ubuntu, and you need to install several prerequisites:
-  sudo apt-get install apache2 git apt-cacher-ng python-vm-builder qemu-kvm
+  sudo apt-get install git apache2 apt-cacher-ng python-vm-builder ruby docker-ce
 
 Sanity checks:
   sudo service apt-cacher-ng status   # Should return apt-cacher-ng is running
-  ls -l /dev/kvm   # Should show a /dev/kvm device
 
 Once you've got the right hardware and software:
 
-    git clone git://github.com/bitcoin/bitcoin.git
+    git clone https://github.com/universe-project/universe.git
     git clone git://github.com/devrandom/gitian-builder.git
     mkdir gitian-builder/inputs
-    wget 'http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.6.tar.gz' -O gitian-builder/inputs/miniupnpc-1.6.tar.gz
+
+    # Download all dependencies specified in gitian descriptors (files clause)
+    # and place them in gitian-builder/inputs
 
     cd gitian-builder
-    bin/make-base-vm --arch i386
-    bin/make-base-vm --arch amd64
+
+    export PATH="$PATH":$PWD/libexec
+    export USE_DOCKER=1
+
+    #bin/make-base-vm --arch i386 --docker
+    bin/make-base-vm --arch amd64 --docker
     cd ..
 
     # To build
-    cd bitcoin
+    cd universe
     git pull
     cd ../gitian-builder
     git pull
-    ./bin/gbuild --commit bitcoin=HEAD ../bitcoin/contrib/gitian.yml
+
+    # win
+    ./bin/gbuild ../universe/contrib/gitian-descriptors/boost-win.yml -j4
+    cp build/out/* inputs/
+
+    ./bin/gbuild ../universe/contrib/gitian-descriptors/deps-win.yml -j4
+    cp build/out/* inputs/
+
+    ./bin/gbuild ../universe/contrib/gitian-descriptors/qt-win.yml -j4
+    cp build/out/* inputs/
+
+    # gitian-win will need outputs (./build/out/...) from previous steps as inputs
+    ./bin/gbuild --commit universe=HEAD ../universe/contrib/gitian-descriptors/gitian-win.yml -j4
+    # build/out/ will contain binaries archive
+
+    # macOS
+    bin/gbuild ../universe/contrib/gitian-descriptors/osxcross.yml -j4 --commit osxcross=HEAD,libdmg-hfsplus=HEAD
+    cp build/out/* inputs/
+
+    bin/gbuild ../universe/contrib/gitian-descriptors/deps-osx.yml -j4
+    cp build/out/* inputs/
+
+    bin/gbuild ../universe/contrib/gitian-descriptors/qt-osx.yml -j4
+    cp build/out/* inputs/
+
+    ./bin/gbuild --commit universe=HEAD ../universe/contrib/gitian-descriptors/gitian-osx.yml -j4
+    # build/out/ will contain binaries image
