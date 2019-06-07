@@ -1237,8 +1237,8 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    {"unicoin.pw", "seed.unicoin.pw"},
-    {"unicoin.pw", "seed2.unicoin.pw"},
+    {"universe-project.com", "seed.universe-project.com"},
+    {"universe-project.com", "seed2.universe-project.com"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
