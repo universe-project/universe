@@ -2,7 +2,7 @@
 
 ### What is Universe coin?
 Universe coin is a decentralised digital cryptocurrency that uses proof-of-stake consensus as a security model, with a combined proof-of-stake/proof-of-work minting system.
-Universe coin uses peer-to-peer technology to operate with no central authority: managing transactions and issuing money are carried out collectively by the network.
+Universe coin uses peer-to-peer technology to operate with no central authority: managing transactions and issuing crypto currynce are carried out collectively by the network.
 
 ### Resources
 
